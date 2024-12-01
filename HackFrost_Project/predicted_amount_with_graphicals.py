@@ -1,4 +1,5 @@
-# 3rd Step: Use a Machine Learning Model (Linear Regression) to predict next month's expenses and generate plot for better understanding.
+# 3rd Step: 
+# Use a Machine Learning Model (Linear Regression) to predict next month's expenses & generate plot for better understanding.
 
 import pandas as pd
 import numpy as np
