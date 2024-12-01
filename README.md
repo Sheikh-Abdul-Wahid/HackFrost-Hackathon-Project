@@ -51,22 +51,22 @@ Kestra will run on `http://localhost:8080`.
 3. Upload the Kestra YAML file (`kestra_hackfrost_hackathon_project.yaml`) in the Kestra UI under "Flows" section.
 
 4. **Execute the workflow in Kestra**:  
-- The workflow fetches the dataset, processes it, calculates monthly totals, predicts future expenses, and generates a visualization.
+  - The workflow fetches the dataset, processes it, calculates monthly totals, predicts future expenses, and generates a visualization.
 
 5. **View outputs**:
-- Predicted expenses: `predicted_expense.csv`
-- Visualization: `monthly_expenses_plot.png`
+  - Predicted expenses: `predicted_expense.csv`
+  - Visualization: `monthly_expenses_plot.png`
 
 ## 📊 Outputs:
-- `monthly_total_expenses.csv`: Processed data containing total expenses per month.
-- `predicted_expense.csv`: Predicted expense for the next month.
-- `monthly_expenses_plot.png`: A line plot showing historical and predicted expenses.
+  - `monthly_total_expenses.csv`: Processed data containing total expenses per month.
+  - `predicted_expense.csv`: Predicted expense for the next month.
+  - `monthly_expenses_plot.png`: A line plot showing historical and predicted expenses.
 
 ## 🧰 Tools and Libraries Used:
-- Kestra: Workflow orchestration.
-- Python: Data processing and analysis.
-- Pandas: Data manipulation.
-- Matplotlib: Visualization.
-- scikit-learn: Linear regression for prediction.
-- Requests: Fetching data from external sources (e.g., GitHub).
-- NumPy: Numerical computations and array manipulation.
+  - Kestra: Workflow orchestration.
+  - Python: Data processing and analysis.
+  - Pandas: Data manipulation.
+  - Matplotlib: Visualization.
+  - scikit-learn: Linear regression for prediction.
+  - Requests: Fetching data from external sources (e.g., GitHub).
+  - NumPy: Numerical computations and array manipulation.
