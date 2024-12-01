@@ -1,4 +1,4 @@
-# 2nd Step: This Python code is used for calculating monthly totals
+# 2nd Step: Python code for calculating monthly totals
 
 import pandas as pd
 
