@@ -8,7 +8,7 @@ tasks:
       import requests
       import pandas as pd
 
-      # Fetch dataset from GitHub
+      # Fetch the dataset from GitHub
       url = 'https://raw.githubusercontent.com/Sheikh-Abdul-Wahid/HackFrost-Hackathon-Project/main/HackFrost_Project/detailed_expenses.csv'
       response = requests.get(url)
       output_path = 'detailed_expenses.csv'  
