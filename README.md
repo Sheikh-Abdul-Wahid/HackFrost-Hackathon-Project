@@ -50,12 +50,12 @@ Kestra will run on `http://localhost:8080`.
 
 3. Upload the Kestra YAML file (`kestra_hackfrost_hackathon_project.yaml`) in the Kestra UI under "Flows" section.
 
-4. **Execute the workflow in Kestra**:  
-  &nbsp;&nbsp;&nbsp;&nbsp;- The workflow fetches the dataset, processes it, calculates monthly totals, predicts future expenses, and generates a visualization.
+4. **Execute the workflow in Kestra**:    
+    - The workflow fetches the dataset, processes it, calculates monthly totals, predicts future expenses, and generates a visualization.
 
-5. **View outputs**:
-  &nbsp;&nbsp;&nbsp;&nbsp;- Predicted expenses: `predicted_expense.csv`
-  &nbsp;&nbsp;&nbsp;&nbsp;- Visualization: `monthly_expenses_plot.png`
+5. **View outputs**:  
+    - Predicted expenses: `predicted_expense.csv`
+    - Visualization: `monthly_expenses_plot.png`
 
 ## 📊 Outputs:
   - `monthly_total_expenses.csv`: Processed data containing total expenses per month.
