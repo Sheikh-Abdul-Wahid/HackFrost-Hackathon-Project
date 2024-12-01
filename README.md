@@ -70,3 +70,6 @@ Kestra will run on `http://localhost:8080`.
   - scikit-learn: Linear regression for prediction.
   - Requests: Fetching data from external sources (e.g., GitHub).
   - NumPy: Numerical computations and array manipulation.
+
+## 🎯 Objective:  
+The project aims to demonstrate how workflows can automate tasks such as data analysis and prediction using Python and Kestra.
