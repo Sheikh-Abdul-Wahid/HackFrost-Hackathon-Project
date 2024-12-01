@@ -1,0 +1,90 @@
+id: kestra_hackfrost_hackathon_project
+namespace: kestra_hackfrost_hackathon
+tasks:
+  - id: test_setup
+    type: io.kestra.plugin.scripts.python.Script
+    description: Test environment setup and fetch dataset
+    script: |
+      import requests
+      import pandas as pd
+
+      # Fetch dataset from GitHub
+      url = 'https://raw.githubusercontent.com/Sheikh-Abdul-Wahid/HackFrost-Hackathon-Project/main/HackFrost_Project/detailed_expenses.csv'
+      response = requests.get(url)
+      output_path = 'detailed_expenses.csv'  
+      with open(output_path, 'wb') as f:
+          f.write(response.content)
+      df = pd.read_csv(output_path)
+      print(df.head())
+    containerImage: python:3.11-slim
+    beforeCommands:
+      - pip install requests pandas
+    outputFiles:
+      - detailed_expenses.csv
+
+  - id: calculate_per_month_total
+    type: io.kestra.plugin.scripts.python.Script
+    description: Calculate monthly totals
+    script: |
+      import pandas as pd
+      data = pd.read_csv('detailed_expenses.csv')
+      monthly_totals = data.groupby('Month')['Total Price($)'].sum().reset_index()
+      monthly_totals.columns = ['Month', 'Total Expense($)']
+      month_order = [
+          "January", "February", "March", "April", "May", "June", 
+          "July", "August", "September", "October", "November", "December"
+        ]
+      monthly_totals['Month'] = pd.Categorical(monthly_totals['Month'], categories=month_order, ordered=True)
+      monthly_totals = monthly_totals.sort_values('Month')
+      print("Monthly Total Expenses:")
+      print(monthly_totals)
+      monthly_totals.to_csv('monthly_total_expenses.csv', index=False)
+    containerImage: python:3.11-slim
+    beforeCommands:
+      - pip install pandas
+    inputFiles:
+       detailed_expenses.csv: "{{ outputs.test_setup.outputFiles['detailed_expenses.csv'] }}"
+    outputFiles:
+      - "monthly_total_expenses.csv"
+
+  - id: visualize_results
+    type: io.kestra.plugin.scripts.python.Script
+    description: Add a plot for better understanding
+    script: |
+      import pandas as pd
+      import numpy as np
+      import matplotlib.pyplot as plt
+      from sklearn.linear_model import LinearRegression
+      processed_data = pd.read_csv('monthly_total_expenses.csv')
+      X = np.arange(len(processed_data)).reshape(-1, 1)  
+      y = processed_data['Total Expense($)'].values  
+      month_names = processed_data['Month'].tolist()
+      model = LinearRegression()
+      model.fit(X, y)
+      next_month_index = np.array([[len(X)]])  
+      predicted_expense = model.predict(next_month_index)
+      prediction = pd.DataFrame({'Month': ['Next Month'], 'Predicted Expense($)': [predicted_expense[0]]})
+      prediction.to_csv('predicted_expense.csv', index=False)
+      print(f"\nPredicted Expense for Next Month: ${predicted_expense[0]:.2f}")
+      plt.plot(X, y, marker='o', label='Historical Expenses')  
+      plt.scatter(len(X), predicted_expense, color='red', label='Predicted Expense')  
+      plt.xticks(ticks=np.arange(len(month_names)), labels=month_names, rotation=45)
+      plt.title("Monthly Expenses Prediction in $")
+      plt.xlabel("Month")
+      plt.ylabel("Total Expense ($)")
+      plt.legend()
+      plt.grid()
+      plt.tight_layout()  
+      plt.show()
+      output_file = './monthly_expenses_plot.png'
+      plt.savefig(output_file)
+      print(f"Plot saved as {output_file}")
+    containerImage: python:3.11-slim
+    beforeCommands:
+      - pip install pandas matplotlib scikit-learn numpy
+    inputFiles:
+        monthly_total_expenses.csv: "{{ outputs.calculate_per_month_total.outputFiles['monthly_total_expenses.csv'] }}"
+    outputFiles:
+        - "predicted_expense.csv"
+        - monthly_expenses_plot.png
+        
