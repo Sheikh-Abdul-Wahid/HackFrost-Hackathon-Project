@@ -12,14 +12,14 @@ Here’s an overview of the files in this repository:
 
 ## 🚀 Features:
 
-1. **Automated Workflow with Kestra**:
+1. **Automated Workflow with Kestra**:  
 The project uses `Kestra` workflows to manage tasks such as fetching data, processing it, and generating predictions.
 
-2. **Expense Analysis**:
+2. **Expense Analysis**:  
 Monthly expenses are analyzed, grouped, and sorted for better understanding.
 
-3. **Expense Prediction**:
+3. **Expense Prediction**:  
 `Linear Regression` is used to predict the expense for the next month based on historical data.
 
-4. **Visualization**:
+4. **Visualization**:  
 A line plot with predictions highlights historical expenses and future projections.
