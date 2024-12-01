@@ -1,9 +1,9 @@
-# 2nd Step: Python code to process the dataset and calculate monthly totals.
+# 2nd Step: Python code for calculating monthly totals
 
 import pandas as pd
 
 # Load the dataset
-data = pd.read_csv('processed_expenses.csv')
+data = pd.read_csv('detailed_expenses.csv')
 
 # Group by month and sum the total prices
 monthly_totals = data.groupby('Month')['Total Price($)'].sum().reset_index()
