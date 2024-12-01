@@ -1,4 +1,4 @@
-# 1st Step: This file is used to test if your environment is set up properly and if the dataset loads correctly.
+# 1st Step: This code is used to test if your environment is set up properly and if the dataset loads correctly.
 
 import pandas as pd
 
