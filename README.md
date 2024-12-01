@@ -10,6 +10,7 @@ Here’s an overview of the files in this repository:
 - `test_setup.py`: Python script to fetch and verify the dataset.
 - `calculate_totals.py`: Python script to calculate monthly expense totals.
 - `visualize_results.py`: Python script to predict next month’s expenses and generate visualizations.
+- `docker-compose.yml`: Configuration to run Kestra locally using Docker Compose.
 
 ## 🚀 Features:
 
@@ -25,6 +26,9 @@ Monthly expenses are analyzed, grouped, and sorted for better understanding.
 4. **Visualization**:  
 A line plot with predictions highlights historical expenses and future projections.
 
+5. **docker-compose.yml**:  
+Configuration to run Kestra locally using Docker Compose.
+
 ## 🛠️ Setup and Execution:
 
 ### Prerequisites
@@ -36,4 +40,30 @@ A line plot with predictions highlights historical expenses and future projectio
 ```bash
 git clone https://github.com/Sheikh-Abdul-Wahid/HackFrost-Hackathon-Project.git
 cd HackFrost-Hackathon-Project
+```
+2. **Run Kestra using Docker Compose**:
+```bash
+docker-compose build
+docker-compose up
+```
+Kestra will run on `http://localhost:8080`.
+3. Upload the Kestra YAML file (`kestra_hackfrost_hackathon_project.yaml`) in the Kestra UI under "Flows" section.
+4. **Execute the workflow in Kestra**:  
+- The workflow fetches the dataset, processes it, calculates monthly totals, predicts future expenses, and generates a visualization.
+5. **View outputs**:
+- Predicted expenses: `predicted_expense.csv`
+- Visualization: `monthly_expenses_plot.png`
 
+## 📊 Outputs:
+- `monthly_total_expenses.csv`: Processed data containing total expenses per month.
+- `predicted_expense.csv`: Predicted expense for the next month.
+- `monthly_expenses_plot.png`: A line plot showing historical and predicted expenses.
+
+## 🧰 Tools and Libraries Used:
+- Kestra: Workflow orchestration.
+- Python: Data processing and analysis.
+- Pandas: Data manipulation.
+- Matplotlib: Visualization.
+- scikit-learn: Linear regression for prediction.
+- Requests: Fetching data from external sources (e.g., GitHub).
+- NumPy: Numerical computations and array manipulation.
