@@ -72,4 +72,5 @@ Kestra will run on `http://localhost:8080`.
   - NumPy: Numerical computations and array manipulation.
 
 ## 🎯 Objective:  
+
 The project aims to demonstrate how workflows can automate tasks such as data analysis and prediction using Python and Kestra.
